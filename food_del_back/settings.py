@@ -172,6 +172,7 @@ CORS_ALLOWED_ORIGINS = [
 
 ALLOWED_HOSTS = [
     "food-delivery-backend-acun.onrender.com",
+    "127.0.0.1",
 ]
 
 
