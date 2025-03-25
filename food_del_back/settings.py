@@ -171,6 +171,11 @@ CORS_ALLOW_ALL_ORIGINS = True  # 👈 Allow all origins (for testing)
 # OR, to allow specific origins only:
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "food-delivery-backend-acun.onrender.com",
+]
+
+ALLOWED_HOSTS =[
+    "food-delivery-backend-acun.onrender.com",
 ]
 
 
