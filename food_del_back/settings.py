@@ -91,8 +91,7 @@ ROOT_URLCONF = 'food_del_back.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            BASE_DIR / 'food-del-app/build'],
+        
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
