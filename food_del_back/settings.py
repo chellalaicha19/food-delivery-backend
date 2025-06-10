@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 from datetime import timedelta
-from dotenv import load_dotenv
 from urllib.parse import urlparse
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -118,8 +117,6 @@ WSGI_APPLICATION = 'food_del_back.wsgi.application'
 #}
 
 
-
-load_dotenv()
 
 DATABASE_URL = os.getenv('DATABASE_URL')
 if DATABASE_URL:
