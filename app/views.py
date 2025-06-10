@@ -146,12 +146,12 @@ def placeOrder(request):
     if not cart:
         return Response({"success": False, "error": "No active cart found"}, status=status.HTTP_400_BAD_REQUEST)
 
-    # If GET request, return cart information
+    # GET returns cart info
     if request.method == "GET":
         cart_data = CartSerializer(cart).data
         return Response({"success": True, "cart": cart_data})
 
-    # If POST request, place order
+    # POST places order and creates delivery
     data = request.data
     delivery_data = {
         "cart": cart.id,
@@ -171,12 +171,17 @@ def placeOrder(request):
         serializer.save()
         cart.is_ordered = True
         cart.save()
-        cart.delete()
+        
+        cart.items.all().delete()
 
-        return Response({"success": True, "message": "Order placed successfully.", "delivery_id": serializer.data["id"]}, status=status.HTTP_201_CREATED)
+        return Response({
+            "success": True,
+            "message": "Order placed successfully.",
+            "delivery_id": serializer.data["id"]
+        }, status=status.HTTP_201_CREATED)
     else:
         return Response({"success": False, "error": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
-    
+
 @api_view(["POST"])
 @permission_classes([IsAdminUser])
 def markDelivered(request, id):

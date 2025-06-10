@@ -11,4 +11,5 @@ urlpatterns = [
     path('delivery/information',views.placeOrder,name="place-order"),
     path('delivery/delivered/<int:id>/',views.markDelivered,name="mark-delivered"),
     
+    
 ]
